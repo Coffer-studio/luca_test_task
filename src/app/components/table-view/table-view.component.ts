@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Course } from 'src/app/models/course.model';
 
 @Component({
@@ -8,4 +8,10 @@ import { Course } from 'src/app/models/course.model';
 })
 export class TableViewComponent {
   @Input() courses: Course[] | null = [];
+
+  @Output() selected = new EventEmitter<Course>();
+
+  editRecord(data: Course) {
+    this.selected.emit(data);
+  }
 }

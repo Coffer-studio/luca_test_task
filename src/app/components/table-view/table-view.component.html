@@ -11,6 +11,9 @@
     <th>Duration</th>
 
     <th>Sales</th>
+
+    <!-- (actions) -->
+    <th></th>
   </tr>
 
   <tr *ngFor="let course of courses">
@@ -71,6 +74,11 @@
       <ng-container *ngIf="!!course.sales?.start && course.sales?.end; else emptyField">
         from {{ course.sales?.start | date:'dd.MM.YY' }} to {{ course.sales?.end | date:'dd.MM.YY' }}
       </ng-container>
+    </td>
+
+    <!-- (actions) -->
+    <td>
+      <button (click)="editRecord(course)">Edit</button>
     </td>
   </tr>
 </table>

@@ -12,12 +12,21 @@ export class AppComponent {
 
   isFormVisible = false;
 
+  selectedCourse = null;
+
   constructor(
     private readonly dataService:DataService
   ) {}
 
-  addNewCourse(data: Course): void {
-    this.dataService.createCourse(data)
-      .then(() => alert('New cource added'));
+  selectCourse(data: Course): void {
+    this.selectedCourse = data as any;
+  }
+
+  applyAction(data: Course): void {
+    if (!data.id) {
+      this.dataService.createCourse(data).then(() => alert('New cource added'));
+    } else {
+      this.dataService.updateCourse(data.id, data).then(() => alert('Selected cource updated'));
+    }
   }
 }

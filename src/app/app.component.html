@@ -1,12 +1,18 @@
 <h1>Courses list</h1>
 
-<app-table-view [courses]="courses$ | async"></app-table-view>
+<app-table-view
+  [courses]="courses$ | async"
+  (selected)="selectCourse($event)"
+></app-table-view>
 
 <br/>
 <hr/>
 <br/>
 
-<h3>Data for new course</h3>
+<h3>Data for course</h3>
 <h5>(all fields are required)</h5>
 
-<app-action-form (formSubmitted)="addNewCourse($event)"></app-action-form>
+<app-action-form
+  [course]="selectedCourse"
+  (submitted)="applyAction($event)"
+></app-action-form>
