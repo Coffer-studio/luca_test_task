@@ -1,0 +1,35 @@
+<form [formGroup]="form">
+  <!-- Name -->
+  <div>
+    <label>Name*</label>
+    <br/>
+    <input formControlName="name" type="text"/>
+  </div>
+
+  <br/>
+
+  <!-- Author -->
+  <div [formGroup]="authorGroup">
+    <!-- First name -->
+    <div>
+      <label>First name*</label>
+      <br/>
+      <input formControlName="firstName" type="text"/>
+    </div>
+
+    <!-- Last name -->
+    <div>
+      <label>Last name*</label>
+      <br/>
+      <input formControlName="lastName" type="text"/>
+    </div>
+  </div>
+
+  <!-- TODO: add other fields -->
+
+  <br/>
+
+  <button [disabled]="form.invalid" (click)="submitForm()">
+    Save
+  </button> 
+</form>

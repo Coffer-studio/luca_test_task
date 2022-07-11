@@ -15,10 +15,18 @@
 
   <tr *ngFor="let course of courses">
     <!-- Name -->
-    <td>{{ course.name }}</td>
+    <td>
+      <span *ngIf="course.name; else emptyField">
+        {{ course.name | titlecase }}
+      </span>
+    </td>
 
     <!-- Author -->
-    <td>{{ course.author.firstName }} {{ course.author.lastName }}</td>
+    <td>
+      <span *ngIf="course.author?.firstName && course.author?.lastName; else emptyField">
+        {{ course.author.firstName | titlecase }} {{ course.author.lastName | titlecase }}
+      </span>
+    </td>
 
     <!-- Contents -->
     <td>

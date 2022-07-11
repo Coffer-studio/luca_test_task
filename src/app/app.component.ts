@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Course } from './models/course.model';
 import { DataService } from './services/data/data.service';
 
 @Component({
@@ -7,9 +8,16 @@ import { DataService } from './services/data/data.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  courses$ = this.dataService.courses$;
+
+  isFormVisible = false;
+
   constructor(
     private readonly dataService:DataService
   ) {}
-  courses$ = this.dataService.courses$;
 
+  addNewCourse(data: Course): void {
+    this.dataService.createCourse(data)
+      .then(() => alert('New cource added'));
+  }
 }
