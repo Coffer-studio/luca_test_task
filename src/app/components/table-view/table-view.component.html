@@ -1,0 +1,72 @@
+<table>
+  <tr>
+    <th>Name</th>
+
+    <th>Author</th>
+
+    <th>Contents</th>
+
+    <th>Plans</th>
+
+    <th>Duration</th>
+
+    <th>Sales</th>
+  </tr>
+
+  <tr *ngFor="let course of courses">
+    <!-- Name -->
+    <td>{{ course.name }}</td>
+
+    <!-- Author -->
+    <td>{{ course.author.firstName }} {{ course.author.lastName }}</td>
+
+    <!-- Contents -->
+    <td>
+      <ol *ngIf="course.contents?.length; else emptyField">
+        <li *ngFor="let content of course.contents">
+          {{ content.name }} ({{ content.type }})
+        </li>
+      </ol>
+    </td>
+
+    <!-- Plans -->
+    <td>
+      <ul *ngIf="course.plans?.length; else emptyField">
+        <li *ngFor="let plan of course.plans">
+          "{{ plan.name }}" - {{ plan.price | currency }}
+
+          <br>
+
+          <ul *ngIf="plan.advantages?.length; else emptyField" class="advantages-list">
+            <li
+              *ngFor="let advantage of plan.advantages"
+              class="advantages-list__item"
+              [class.advantages-list__item_disabled]="!advantage.available"
+            >
+              <span>{{ advantage.available ? '&#10004;' : '&#10007;' }}</span>
+              <span>{{ advantage.title }}</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+
+    <!-- Duration -->
+    <td>
+      <ng-container *ngIf="!!course.duration?.value && course.duration?.unit; else emptyField">
+        {{ course.duration?.value }} {{ course.duration?.unit }}
+      </ng-container>
+    </td>
+
+    <!-- Sales -->
+    <td>
+      <ng-container *ngIf="!!course.sales?.start && course.sales?.end; else emptyField">
+        from {{ course.sales?.start | date:'dd.MM.YY' }} to {{ course.sales?.end | date:'dd.MM.YY' }}
+      </ng-container>
+    </td>
+  </tr>
+</table>
+
+<ng-template #emptyField>
+  &mdash;
+</ng-template>
