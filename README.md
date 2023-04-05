@@ -6,7 +6,7 @@
 
 
 ## Результат
-Результат необходимо опубликовать на [StackBlitz](https://https://stackblitz.com)
+Результат необходимо опубликовать на [StackBlitz](https://stackblitz.com)
 
 
 
@@ -19,4 +19,4 @@ You need to make form for course data editing with **autosave** using the `DataS
 This form should be on a separate page with the `editor/:id` route.
 
 ## Result
-The result must be published on [StackBlitz](https://https://stackblitz.com)
+The result must be published on [StackBlitz](https://stackblitz.com)
