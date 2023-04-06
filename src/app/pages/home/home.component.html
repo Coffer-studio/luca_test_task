@@ -1,0 +1,8 @@
+<h1>Список доступных курсов:</h1>
+<div
+  *ngFor="let course of courses$ | async"
+  class="course-item"
+>
+  <h3>{{course.name}}</h3>
+  <a [routerLink]="['editor', course.id]">Редактировать</a>
+</div>
